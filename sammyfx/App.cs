@@ -6,13 +6,13 @@ namespace sammyfx
 {
 	public class App
 	{
-		Router router;
-		IDictionary<string, IView> views;
+		Func<Router> routerFactory;
+		IDictionary<string, Func<IView>> viewFactories;
 
 
-		public App(Router router, IDictionary<string, IView> views) {
-			this.router = router;
-			this.views = views;
+		public App(Func<Router> routerFactory, IDictionary<string, Func<IView>> viewFactories) {
+			this.routerFactory = routerFactory;
+			this.viewFactories = viewFactories;
 		}
 
 
@@ -23,7 +23,7 @@ namespace sammyfx
 
 		public void Run(Request request) {
 			while (true) {
-				var response = this.router.Handle (request);
+				var response = this.routerFactory().Handle (request);
 				request = Display (response);
 			}
 		}
@@ -38,7 +38,7 @@ namespace sammyfx
 
 
 		private Request Display(Response response) {
-			return this.views [response.Viewname].Show (response.ViewModel);
+			return this.viewFactories [response.Viewname]().Show (response.ViewModel);
 		}
 	}
 }

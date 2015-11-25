@@ -10,10 +10,10 @@ namespace sammyfx.consoletest
 		public static void Main (string[] args)
 		{
 			var app = new sammyfx.App (
-				new Test(),
-				new Dictionary<string,sammyfx.IView>{
-					{"LoginView", new LoginView()},
-					{"MainView", new MainView()}
+				() => new Test(),
+				new Dictionary<string,Func<sammyfx.IView>>{
+					{"LoginView", () => new LoginView()},
+					{"MainView", () => new MainView()}
 				}
 			);
 
@@ -41,7 +41,6 @@ namespace sammyfx.consoletest
 			return new Request ("/login", username);
 		}
 		#endregion
-		
 	}
 
 	class MainView : sammyfx.IView {
@@ -52,6 +51,5 @@ namespace sammyfx.consoletest
 			return new Request ("/exit", null);
 		}
 		#endregion
-		
 	}
 }

@@ -1,10 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace sammyfx
 {
-
 	public class Response {
 		public Response(string viewname, object viewModel) {
 			this.Viewname = viewname;
