@@ -1,0 +1,13 @@
+﻿<Properties StartupItem="sammyfx.consoletest/sammyfx.consoletest.csproj" RefactoringSettings.EnableRefactorings="True">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="sammyfx.consoletest/Program.cs">
+    <Files>
+      <File FileName="sammyfx.consoletest/Program.cs" Line="39" Column="1" />
+      <File FileName="sammyfx/App.cs" Line="19" Column="35" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
