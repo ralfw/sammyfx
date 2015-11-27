@@ -31,14 +31,17 @@ namespace sammyfx
 
 		static Request Create_request_for_commandline (string[] args)
 		{
-			var req = new Request ("/", null);
-			if (args.Length > 1) req = new Request ("/" + args[0], null);
-			return req;
+			return new Request (
+				args.Length >= 1 ? args[0] : "/",
+				args.Skip(1)
+			);
 		}
 
-
 		private Request Display(Response response) {
-			return this.viewFactories [response.Viewname]().Show (response.ViewModel);
+			if (this.viewFactories.ContainsKey (response.Viewname))
+				return this.viewFactories [response.Viewname] ().Show (response.ViewModel);
+			else
+				throw new InvalidOperationException ($"Unknown view '{response.Viewname}'!");
 		}
 	}
 }

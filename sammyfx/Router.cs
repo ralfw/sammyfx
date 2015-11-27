@@ -15,7 +15,10 @@ namespace sammyfx
 		#region IRouteHandler implementation
 		public Response Handle (Request request)
 		{
-			return this.handlers [request.Route.ToLower ()] (request);
+			if (this.handlers.ContainsKey (request.Route))
+				return this.handlers [request.Route.ToLower ()] (request);
+			else
+				throw new InvalidOperationException ($"No route handler for '{request.Route}'!");
 		}
 		#endregion
 	}

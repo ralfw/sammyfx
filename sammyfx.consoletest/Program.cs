@@ -24,7 +24,7 @@ namespace sammyfx.consoletest
 
 	class Test : Router {
 		public Test() {
-			Handle ("/", _ => new Response ("LoginView", null));
+			Handle ("/", _ => new Response ("LoginView"));
 			Handle ("/login", request => new Response ("MainView", request.Data));
 			Handle ("/exit", _ => {Environment.Exit (0); return null; });
 		}
@@ -48,7 +48,7 @@ namespace sammyfx.consoletest
 		public Request Show (object viewModel)
 		{
 			Console.WriteLine ($"welcome, {viewModel}");
-			return new Request ("/exit", null);
+			return new Request ("/exit");
 		}
 		#endregion
 	}
